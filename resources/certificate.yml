@@ -1,0 +1,14 @@
+Resources:
+  SSLCertificate:
+    Type: "Custom::DNSCertificate"
+    Properties:
+      DomainName: "${self:provider.environment.DOMAIN_NAME}"
+      SubjectAlternativeNames:
+        - "www.${self:provider.environment.DOMAIN_NAME}"
+      ValidationMethod: DNS
+      # Needs to be in us-east-1 because of CloudFront limitations
+      Region: us-east-1
+      DomainValidationOptions:
+        - DomainName: "${self:provider.environment.DOMAIN_NAME}"
+          HostedZoneId: "${self:provider.environment.HOSTED_ZONE_ID}"
+      ServiceToken: !GetAtt [CustomAcmCertificateLambda, Arn]

@@ -1,0 +1,55 @@
+org: muram
+app: murammohamed-com
+service: resume
+
+frameworkVersion: ^3.7.5
+
+plugins:
+  - serverless-s3-sync
+  - serverless-export-env
+  - serverless-stack-output
+  - serverless-cloudfront-invalidate
+
+variablesResolutionMode: 20210326
+
+custom:
+  # The domain name to be used
+  domainName: ${self:provider.environment.DOMAIN_NAME}
+
+  # Output plugin configuration
+  output:
+    handler: modules/output.handler
+
+  # CloudFront invalidation plugin configuration
+  cloudfrontInvalidate:
+    - distributionIdKey: "CloudFrontDistributionId"
+      items: # Add your files to invalidate here:
+        - "/${self:provider.environment.ROOT_OBJECT}"
+      stage: "prod"
+
+  # S3 sync plugin configuration
+  s3Sync:
+    - bucketName: ${self:provider.environment.DOMAIN_NAME}
+      localDir: src
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ${opt:region, 'us-east-1'}
+  stage: prod
+  profile: muram-production
+  environment:
+    DOMAIN_NAME: "murammohamed.com"
+    HOSTED_ZONE_ID: "Z02808431LHXZKZ1OFZDT"
+    ROOT_OBJECT: "index.html"
+
+resources:
+  - ${file(resources/custom-acm-certificate-lambda.yml)}
+  - ${file(resources/custom-acm-certificate-lambda-role.yml)}
+  - ${file(resources/cloudfront-origin-access-identity.yml)}
+  - ${file(resources/s3-bucket.yml)}
+  - ${file(resources/s3-policies.yml)}
+  - ${file(resources/dns-records.yml)}
+  - ${file(resources/certificate.yml)}
+  - ${file(resources/cf-distribution.yml)}
+  - ${file(resources/outputs.yml)}

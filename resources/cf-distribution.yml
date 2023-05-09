@@ -1,0 +1,39 @@
+# See https://blog.m-taylor.co.uk/2018/01/cloudformation-template-for-a-cloudfront-enabled-s3-website.html
+Resources:
+  CFDistribution:
+    Type: "AWS::CloudFront::Distribution"
+    Properties:
+      DistributionConfig:
+        Aliases:
+          - "${self:provider.environment.DOMAIN_NAME}"
+          - "www.${self:provider.environment.DOMAIN_NAME}"
+        Origins:
+          - DomainName: !GetAtt [WebsiteBucket, DomainName]
+            OriginPath: ""
+            Id: S3BucketOrigin
+            S3OriginConfig:
+              OriginAccessIdentity:
+                Fn::Join:
+                  - ""
+                  - - "origin-access-identity/cloudfront/"
+                    - !Ref CloudFrontOriginAccessIdentity
+        Comment: "CloudFront origin for ${self:provider.environment.DOMAIN_NAME}"
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+          TargetOriginId: S3BucketOrigin
+          Compress: true
+          ForwardedValues:
+            QueryString: false
+            Cookies:
+              Forward: none
+          ViewerProtocolPolicy: redirect-to-https
+        DefaultRootObject: ${self:provider.environment.ROOT_OBJECT}
+        Enabled: true
+        HttpVersion: "http2"
+        PriceClass: "PriceClass_100"
+        ViewerCertificate:
+          AcmCertificateArn: !Ref SSLCertificate
+          SslSupportMethod: sni-only

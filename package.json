@@ -1,0 +1,27 @@
+{
+  "name": "murammohamed-com-resume",
+  "version": "1.0.3",
+  "description": "Hosting static website on AWS via S3 and CloudFront as CDN for my resume.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:muram/serverless-static-resume.git"
+  },
+  "author": "Muram Mohamed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/muram/serverless-static-resume/issues"
+  },
+  "homepage": "https://github.com/muram/serverless-static-resume#readme",
+  "devDependencies": {
+    "serverless-s3-sync": "^1.17.1",
+    "serverless-export-env": "^2.0.0",
+    "serverless-stack-output": "^0.2.3",
+    "serverless-cloudfront-invalidate": "^1.9.0"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
