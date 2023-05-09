@@ -16,10 +16,10 @@
   },
   "homepage": "https://github.com/muram/serverless-static-resume#readme",
   "devDependencies": {
-    "serverless-s3-sync": "^3.1.0",
+    "serverless-cloudfront-invalidate": "^1.12.2",
     "serverless-export-env": "^2.2.0",
-    "serverless-stack-output": "^0.2.3",
-    "serverless-cloudfront-invalidate": "^1.12.2"
+    "serverless-s3-sync": "^3.1.0",
+    "serverless-stack-output": "^0.2.3"
   },
   "dependencies": {
     "dotenv": "^16.0.3"
