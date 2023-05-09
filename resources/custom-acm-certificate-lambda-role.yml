@@ -21,9 +21,10 @@ Resources:
                   - acm:DeleteCertificate
                   - acm:DescribeCertificate
                   - acm:RemoveTagsFromCertificate
+                  - acm:UpdateCertificateOptions
                 Effect: Allow
                 Resource:
-                  - !Sub "arn:aws:acm:*:${AWS::AccountId}:certificate/*"
+                  - !Sub "arn:${AWS::Partition}:acm:*:${AWS::AccountId}:certificate/*"
               - Action:
                   - acm:RequestCertificate
                   - acm:ListTagsForCertificate
@@ -37,4 +38,4 @@ Resources:
                 Resource:
                   - arn:aws:route53:::hostedzone/*
             Version: "2012-10-17"
-          PolicyName: "CustomAcmCertificateLambdaExecutionPolicy-${self:service}"
+          PolicyName: !Sub "${AWS::StackName}-CustomAcmCertificateLambdaExecutionPolicy"

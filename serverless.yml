@@ -2,7 +2,7 @@ org: muram
 app: murammohamed-com
 service: resume
 
-frameworkVersion: ^3.7.5
+frameworkVersion: "3"
 
 plugins:
   - serverless-s3-sync
