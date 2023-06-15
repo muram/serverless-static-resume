@@ -57,12 +57,14 @@
       background: linear-gradient(90deg, rgba(238, 174, 202, 1) 0%, rgba(223, 233, 148, 1) 100%);
       left: -80px;
       top: -120px;
+      animation: move-up 2s ease-in infinite alternate-reverse;
     }
 
     .shape:last-child {
       background: linear-gradient(to right, #022d0b, #d0dd45);
       right: -30px;
       bottom: -120px;
+      animation: move-up 2s ease-in infinite alternate-reverse;
     }
 
     .wrapper,
@@ -214,6 +216,26 @@
     .buttons button:hover {
       color: black;
     }
+
+    @keyframes move-up {
+      to {
+        transform: translateY(-10px);
+      }
+    }
+
+    @media screen and (max-width: 500px) {
+      .wrapper {
+        width: 90%;
+      }
+
+      .name {
+        font-size: 20px;
+      }
+
+      .about {
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
 
@@ -229,7 +251,7 @@
     <!-- Profile image area -->
     <div class="img-area">
       <div class="inner-area">
-        <img src="https://avatars.githubusercontent.com/u/20080955?v=4" alt="Github Profile Picture">
+        <img src="https://avatars.githubusercontent.com/u/20080955?v=4" alt="Muram Mohamed's Profile Picture">
       </div>
     </div>
     <!-- Basic information -->
@@ -251,12 +273,18 @@
     </div>
     <!-- 2 buttons -->
     <div class="buttons">
-      <button onclick="location.href='resume.pdf'">Resume 🔒</button>
+      <button id="resumeBtn">Resume 🔒</button>
       <button>
         <a href="mailto:muram@murammohamed.com?subject=Hello%20Muram!">Contact Me</a>
       </button>
     </div>
   </div>
+
+  <script>
+    document.getElementById('resumeBtn').onclick = function () {
+      location.href = 'resume.pdf';
+    };
+  </script>
 
 </body>
 
