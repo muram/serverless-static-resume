@@ -2,10 +2,9 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="UTF-8">
   <!-- https://realfavicongenerator.net -->
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=1" alt="Apple Touch Icon">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=1">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=1">
   <link rel="manifest" href="site.webmanifest?v=1">
@@ -14,270 +13,176 @@
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
   <!-- end of favicon -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
-    Muram Mohamed | Homepage
-  </title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css"
-    integrity="sha512-gMjQeDaELJ0ryCI+FtItusU9MkAifCZcGq789FrzkiM49D8lbDhoaUaIX4ASU187wofMNlgBJ4ckbrXM9sE6Pg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://unpkg.com/feather-icons"></script>
+  <link href="https://unpkg.com/feather-icons/dist/feather.css" rel="stylesheet">
+  <title>Muram Mohamed | Homepage</title>
   <style>
-    * {
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: #333;
     }
 
-    body {
+    .hero {
+      height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      background-color: #080710;
-    }
-
-    .background {
-      width: 430px;
-      height: 520px;
-      left: 50%;
-      top: 50%;
-      position: absolute;
-      transform: translate(-50%, -50%);
-    }
-
-    .background .shape {
-      position: absolute;
-      border-radius: 50%;
-      height: 200px;
-      width: 200px;
-    }
-
-    .shape:first-child {
-      background: linear-gradient(90deg, rgba(238, 174, 202, 1) 0%, rgba(223, 233, 148, 1) 100%);
-      left: -80px;
-      top: -120px;
-      animation: move-up 2s ease-in infinite alternate-reverse;
-    }
-
-    .shape:last-child {
-      background: linear-gradient(to right, #022d0b, #d0dd45);
-      right: -30px;
-      bottom: -120px;
-      animation: move-up 2s ease-in infinite alternate-reverse;
-    }
-
-    .wrapper,
-    .wrapper .img-area,
-    .social-icons a,
-    .buttons button {
-      background-color: rgba(255, 255, 255, 0.13);
-      border-radius: 10px;
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-    }
-
-    .wrapper {
-      position: relative;
-      display: flex;
       align-items: center;
-      justify-content: center;
       flex-direction: column;
-      width: 350px;
-      padding: 30px;
-      border-radius: 10px;
+      background: #333;
+      color: #fff;
     }
 
-    .wrapper .img-area {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 150px;
+    .hero img {
       width: 150px;
       border-radius: 50%;
+      margin-bottom: 20px;
     }
 
-    .img-area .inner-area {
-      height: calc(100% - 25px);
-      width: calc(100% - 25px);
-      border-radius: 50%;
+    .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
     }
 
-    .inner-area img {
-      height: 100%;
-      width: 100%;
-      border-radius: 50%;
-      object-fit: cover;
+    .hero h1 span {
+      display: inline-block;
+      overflow: hidden;
+      border-right: .15em solid white;
+      white-space: nowrap;
+      letter-spacing: .15em;
+      animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
     }
 
-    .wrapper .name {
-      color: white;
-      margin: 10px 0 5px 0;
-      font-size: 23px;
-      font-weight: 500;
-    }
+    @keyframes typing {
+      from {
+        width: 0
+      }
 
-    .wrapper .about {
-      color: #d0d1d7;
-      font-weight: 400;
-      font-size: 16px;
-      text-align: center;
-    }
-
-    .wrapper .social-icons {
-      margin: 15px 0 25px 0;
-    }
-
-    .social-icons a {
-      position: relative;
-      display: inline-flex;
-      text-decoration: none;
-      border-radius: 50%;
-      height: 40px;
-      width: 40px;
-      margin: 0 5px;
-    }
-
-    .social-icons a:hover::before,
-    .wrapper .icon:hover::before,
-    .buttons button:hover:before {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      background: #ecf0f3;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      box-shadow: inset -3px -3px 7px #ffffff,
-        inset 3px 3px 5px #ceced1;
-    }
-
-    .social-icons a i {
-      width: 100%;
-      height: 100%;
-      font-size: 20px;
-      line-height: 35px;
-      position: relative;
-      z-index: 3;
-      text-align: center;
-    }
-
-    .social-icons a:nth-last-child(1) i {
-      color: #13d151;
-    }
-
-    .social-icons a:nth-last-child(2) i {
-      color: #e6ba12;
-    }
-
-    .social-icons a:nth-last-child(3) i {
-      color: #1da9e9;
-    }
-
-    .social-icons a:nth-last-child(4) i {
-      color: #f23400;
-    }
-
-    .wrapper .buttons {
-      display: flex;
-      width: 100%;
-      justify-content: space-between;
-    }
-
-    .buttons button {
-      outline: none;
-      padding: 12px 0;
-      color: #d0d1d6;
-      font-size: 17px;
-      position: relative;
-      width: 100%;
-      border: none;
-      font-weight: 400;
-      border-radius: 5px;
-      cursor: pointer;
-      z-index: 4;
-    }
-
-    .buttons button:first-child {
-      margin-right: 10px;
-    }
-
-    .buttons button:last-child {
-      margin-left: 10px;
-    }
-
-    .buttons button:hover:before {
-      z-index: -1;
-      border-radius: 5px;
-    }
-
-    .buttons button:hover {
-      color: black;
-    }
-
-    @keyframes move-up {
       to {
-        transform: translateY(-10px);
+        width: 100%
       }
     }
 
-    @media screen and (max-width: 500px) {
-      .wrapper {
-        width: 90%;
+    @keyframes blink-caret {
+
+      from,
+      to {
+        border-color: transparent
       }
 
-      .name {
-        font-size: 20px;
+      50% {
+        border-color: white;
       }
+    }
 
-      .about {
-        font-size: 14px;
-      }
+    .hero p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .hero .social-links a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .social-icon {
+      font-size: 24px;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .social-icon svg {
+      stroke: #fff;
+      transition: stroke 0.3s ease-in-out;
+    }
+
+    .social-icon:hover svg {
+      stroke: #009688;
+    }
+
+    .about {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .about h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .about p {
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      gap: 10px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #333;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      margin: 10px;
+      border-radius: 5px;
+      text-align: center;
+      width: fit-content;
+    }
+
+    .footer {
+      background: #333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
     }
   </style>
 </head>
 
 <body>
-  <!-- For the element of the background -->
-  <div class="background">
-    <div class="shape"></div>
-    <div class="shape"></div>
-  </div>
-
-  <!-- Basic structure of profile card -->
-  <div class="wrapper">
-    <!-- Profile image area -->
-    <div class="img-area">
-      <div class="inner-area">
-        <img src="https://avatars.githubusercontent.com/u/20080955?v=4" alt="Muram Mohamed's Profile Picture">
-      </div>
+  <section class="hero">
+    <img src="https://avatars.githubusercontent.com/u/20080955?v=4" alt="Muram Mohamed's Profile Picture">
+    <h1><span>Hi, I'm Muram 👋</span></h1>
+    <p>Principal Engineer | OSS Contributor</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/murammohamed/" class="social-icon">
+        <span data-feather="linkedin"></span>
+      </a>
+      <a href="https://github.com/muram" class="social-icon">
+        <span data-feather="github"></span>
+      </a>
+      <a href="https://t.me/muram_mohamed" class="social-icon">
+        <span data-feather="message-circle"></span>
+      </a>
+      <a href="https://keybase.io/muram" class="social-icon">
+        <span data-feather="key"></span>
+      </a>
     </div>
-    <!-- Basic information -->
-    <div class="name">Hi, I'm Muram 👋</div>
-    <div class="about">
-      As a Principal Engineer, my passion lies in crafting cloud-based solutions. I concentrate on crafting
+  </section>
+
+  <section class="about">
+    <h2>A little about me</h2>
+    <p>As a Principal Engineer, my passion lies in crafting cloud-based solutions. I concentrate on crafting
       infrastructure as code, implementing DevOps methodologies, and engineering secure and scalable infrastructure
       components that can be reused. When I'm not on the grind, I'm all about getting out and unleashing my inner
       adventurer! Whether it's pounding the pavement on a heart-pumping run or trekking through the great outdoors, I
-      can't get enough of Mother Nature's playground.
-    </div>
-    <!-- social icon -->
-    <div class="social-icons">
-      <a href="https://www.linkedin.com/in/murammohamed/" class="in"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/muram" class="gh"><i class="fab fa-github"></i></a>
-      <a href="https://t.me/muram_mohamed" class="yt"><i class="fab fa-telegram"></i></a>
-      <a href="https://keybase.io/muram" class="whoami"><i class="fab fa-keybase"></i></a>
+      can't get enough of Mother Nature's playground.</p>
+  </section>
 
-    </div>
-    <!-- 2 buttons -->
-    <div class="buttons">
-      <button id="resumeBtn">Resume 🔒</button>
-      <button>
-        <a href="mailto:muram@murammohamed.com?subject=Hello%20Muram!">Contact Me</a>
-      </button>
-    </div>
+  <div class="buttons">
+    <a id="resumeBtn" href="resume.pdf" class="button">Resume 🔒</a>
+    <a href="mailto:muram@murammohamed.com?subject=Hello%20Muram!" class="button">Contact Me</a>
   </div>
 
   <script>
@@ -286,6 +191,15 @@
     };
   </script>
 
+  <footer class="footer">
+    <p>&copy; 2023 Muram Mohamed. All rights reserved.</p>
+  </footer>
+
+  <script>
+    window.onload = function () {
+      feather.replace();
+    }
+  </script>
 </body>
 
 </html>
